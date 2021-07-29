@@ -1,0 +1,23 @@
+
+<%= form_with model: post, class: 'divTableRow', id: dom_id(post, 'inline_form') do |form| %>
+  <div class="divTableCell">
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="divTableCell">
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="divTableCell">
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="divTableCell">
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="divTableCell">
+    <%= form.submit %>
+  </div>
+<% end %>
+

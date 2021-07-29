@@ -1,0 +1,21 @@
+| <%= link_to 'Back', root_path %><hr>
+<h1>Posts</h1>
+
+<div class="divTable paleBlueRows">
+    <div class="divTableHeading">
+        <div class="divTableRow">
+            <div class="divTableHead"> S.no.</div>
+            <div class="divTableHead">Title</div>
+            <div class="divTableHead">Description</div>
+            <div class="divTableHead">Action</div>
+        </div>
+    </div>    
+            <div class="divTableBody">
+            <% @posts.each_with_index do |post,index| %>
+                  <%= content_tag :div, class: 'divTableRow', id: dom_id(post) do %>
+                      <div class="divTableCell"><%= index +1%></div>
+                      <%= render "post", post:post %>
+                  <% end %>  
+            <% end %>
+            </div>
+</div>        

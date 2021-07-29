@@ -1,0 +1,23 @@
+<%# debugger %>
+  <table>  
+  <% posts.each_slice(3)  do |posts| %>
+      <tr>
+        <% posts.each  do |post| %>
+        <td style="border: 1px solid gray;">
+        	<h4>Title : <%= post.title %></h4>
+        	<%= image_tag post.image.url, width:350, height:200%>
+           	<p><b>Description : </b><%= post.description %></p>
+           	<% if post.likes.count == 1 %>
+           	<%= post.likes.count %>
+           	<%= link_to "Unlike", like_path(id:post.likes.first.id), method: :delete, remote: true %>
+           	<% else %>
+      		<%= link_to "Like", likes_path(id:post.id), method: :post, remote:true %>
+			<% end %>
+        </td>
+        <% end %>
+      </tr>
+  <% end %>
+  </table>
+
+  <p>
+        

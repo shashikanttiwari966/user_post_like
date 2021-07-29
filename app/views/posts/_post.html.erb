@@ -1,0 +1,7 @@
+ 
+ <div class="divTableCell"><%= post.title %></div>
+ <div class="divTableCell"><%= post.description %></div>
+ <div class="divTableCell">
+ 	<%= link_to 'Show', post %>
+    <%= link_to 'Edit', edit_post_path(post), remote: true %>
+   <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </div>
