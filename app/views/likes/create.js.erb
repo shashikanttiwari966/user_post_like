@@ -1,0 +1,11 @@
+var id = "likkke_<%=@post.id%>"
+var new_id = "like_post_<%=@post.id%>"
+var dd = document.getElementById(id)
+dd.innerText = "<%=@post.likes.count%>"
+var ddd = document.getElementById(new_id)
+ddd.innerText = "Unlike"
+ddd.href = "/likes/<%=@like.id%>?post_id=<%=@post.id%>"
+ddd.id = "unlike_post_<%=@post.id%>"
+ddd.dataset.method = "delete"
+
+

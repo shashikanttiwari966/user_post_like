@@ -21,6 +21,7 @@ gem "paperclip"
 gem 'puma', '~> 5.0'
 
 gem 'devise'
+gem 'jquery'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

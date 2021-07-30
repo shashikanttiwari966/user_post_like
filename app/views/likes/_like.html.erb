@@ -1,7 +1,13 @@
-<% if post.likes.count == 1 %>
-      <%= post.likes.count %>
-      <%= link_to "Unlike", like_path(post_id:post.id, like_post_id: post.likes.first.id), method: :delete, remote: true %>
-<% else %>
-      <%= link_to "Like", likes_path(post_id:post.id), method: :post, remote:true %>
+<span id="likkke_<%=post.id%>"></span>
+<% if !post.likes.where(user_id:current_user.id).blank? %>
+      <%#= post.likes.count %>
+      <%= render 'likes/post_like_count',post:post %>
+      <span id= "like_btn"><%= link_to "Unlike", like_path(id:post.likes.first.id, post_id: post.id), method: :delete, remote: true, id: "unlike_post_#{post.id}" %></span>
+<% elsif post.likes.where(user_id:current_user.id).blank? %>
+      <%#= post.likes.count %>
+      <span id= "like_btn"><%= link_to "Like", likes_path(post_id:post.id,like_on_type:"Post"), method: :post, remote:true, id: "like_post_#{post.id}" %></span>
 <% end %>
     
+
+
+
