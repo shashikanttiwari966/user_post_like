@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: "Post #{full_name(@post)} was successfully created." }
+        format.html { redirect_to root_path, notice: "Post #{full_name(@post)} was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }

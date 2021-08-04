@@ -8,21 +8,31 @@ class LikesController < ApplicationController
   end
 
   def create
-    # debugger
     if @post.present?
       @like = @post.likes.create(user_id:current_user.id)
       #redirect_to root_path(@post), notice:"Liked post! #{@post.title}"
     elsif @comment.present? 
-      @comment.likes.create(user_id:current_user.id)
-      redirect_to root_path(@comment), notice:"Liked comment! #{@comment.comment}"
+      @like =@comment.likes.create(user_id:current_user.id)
+      # redirect_to root_path(@comment), notice:"Liked comment! #{@comment.comment}"
     end 
+  end
+
+  def create_like_comment
+    # if @comment.present? 
+    #   @like =@comment.likes.create(user_id:current_user.id)
+    # end
   end
 
   def destroy
     @like = Like.find(params[:id])
     @like.destroy
     @post = Post.find(params[:post_id])
+    # @comment = Comment.find(params[:comment_id])
     #redirect_to root_path
+  end
+
+  def destroy_like_comment
+    
   end
 
   private

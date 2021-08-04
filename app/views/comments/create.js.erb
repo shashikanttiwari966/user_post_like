@@ -1,0 +1,1 @@
+$("#comment_<%= @comment.post_id %>").html("<%= escape_javascript(render partial: 'comment', locals: { post: @comment.post_id } ) %>"); 

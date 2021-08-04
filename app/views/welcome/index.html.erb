@@ -1,13 +1,20 @@
 <% if user_signed_in? %>
     <% if current_user.role?("User") %>
-        | <%= link_to 'New post', new_post_path(current_user)%> |  
-        <%= link_to 'show post', post_path(current_user)%>                              
+        <p class="text-info p-3">
+            <%= link_to 'New post', new_post_path(current_user)%> |  
+            <%= link_to 'show post', post_path(id:current_user)%>
+        </p>                          
         <hr><h3>Hii!, User.</h3>
         <%= render 'show_post', posts:@postall%>
+
     <% elsif current_user.role?("Admin") %>
-        | <%= link_to 'New post', new_post_path %> | <%= link_to 'View all', posts_path%><hr>
+        <p class="text-info pt-3 pl-2">
+            <%= link_to 'New post', new_post_path(id:current_user), class:"text-info" %>
+            | <%= link_to 'View all', posts_path, class:"text-success"%>
+        </p><hr>
         <h3>Welcome !!!</h3>
         <%= render 'show_post', posts:@postall%>
+        
     <%else %>
         <hr>
         <h3>Hii!, Creator.</h3>

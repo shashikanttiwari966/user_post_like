@@ -10,7 +10,10 @@ class CommentsController < ApplicationController
   	us= User.find(params[:comment][:user_id])
   	po = Post.find(params[:comment][:post_id])
   	@comment = Comment.create(user:us, post:po, comment:params[:comment][:comment])
-  	return redirect_to root_path
+  	respond_to do |format|
+      format.js
+    end 
+    # redirect_to root_path
   end
 
   def show

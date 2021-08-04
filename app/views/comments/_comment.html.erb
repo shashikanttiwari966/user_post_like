@@ -1,0 +1,8 @@
+<% post = Post.find_by(id:post)%>
+<h5>Comments : </h5>
+  <ul>
+      <% post.comments.each do |c|%>
+          <li style="list-style: square;"><%= c.comment %>
+          <%= render 'likes/like_comment', c:c %></li>
+      <% end %>
+  </ul>

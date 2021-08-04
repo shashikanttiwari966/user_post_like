@@ -35,13 +35,6 @@ ActiveRecord::Schema.define(version: 2021_07_29_102625) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "old_likes", force: :cascade do |t|
-    t.integer "like_on_id"
-    t.string "like_on_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "description"

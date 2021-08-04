@@ -1,10 +1,1 @@
-var id = "likkke_<%=@post.id%>"
-var new_id = "unlike_post_<%=@post.id%>"
-var dd = document.getElementById(id)
-dd.innerText = "<%=@post.likes.count%>"
-var ddd = document.getElementById(new_id)
-debugger
-ddd.innerText = "like"
-ddd.href = "/likes?like_on_type=Post&post_id=<%=@post.id%>"
-ddd.id = "like_post_<%=@post.id%>"
-ddd.dataset.method = "post"
+$('#like_or_unlike_<%= @post.id%>').html("<%= escape_javascript(render partial: 'likes/like', locals: { post: @post } ) %>"); 

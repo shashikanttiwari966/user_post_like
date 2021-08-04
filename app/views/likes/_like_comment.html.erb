@@ -1,0 +1,7 @@
+<% if !c.likes.where(user_id:current_user.id).blank?%>
+    <span id="likecom_<%=c.id%>"><%= c.likes.count %></span>
+    <%= link_to "Unlike", like_path(id: c.likes.last.id,comment_id:c.id), method: :delete, remote:true, id: "unlike_comment_#{c.id}" %>
+<% elsif c.likes.where(user_id:current_user.id).blank? %>
+    <span id="likecom_<%=c.id%>"><%= c.likes.count %></span>
+    <%= link_to "Like", likes_path(comment_id:c.id,like_on_type:"Comment"), method: :post, remote:true, id: "like_comment_#{c.id}" %>
+<% end %>
