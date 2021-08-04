@@ -8,42 +8,40 @@ class LikesController < ApplicationController
   end
 
   def create
-    if @post.present?
-      @like = @post.likes.create(user_id:current_user.id)
-      #redirect_to root_path(@post), notice:"Liked post! #{@post.title}"
-    elsif @comment.present? 
-      @like =@comment.likes.create(user_id:current_user.id)
-      # redirect_to root_path(@comment), notice:"Liked comment! #{@comment.comment}"
-    end 
+    @post = Post.find(params[:post_id])
+    @like = @post.likes.create(user_id:current_user.id)
+    #redirect_to root_path(@post), notice:"Liked post! #{@post.title}"
   end
 
   def create_like_comment
-    # if @comment.present? 
-    #   @like =@comment.likes.create(user_id:current_user.id)
-    # end
+    @comment = Comment.find(params[:comment_id])
+    @like =@comment.likes.create(user_id:current_user.id)
+    # redirect_to root_path(@comment), notice:"Liked comment! #{@comment.comment}"
   end
 
   def destroy
+    # debugger
     @like = Like.find(params[:id])
-    @like.destroy
+    # @like = Like.find_by(id: params[:id],user_id:current_user.id)
+    if @like.present?
+      @like.destroy
+    end
     @post = Post.find(params[:post_id])
-    # @comment = Comment.find(params[:comment_id])
     #redirect_to root_path
   end
 
   def destroy_like_comment
-    
+    @like = Like.find(params[:id])
+    @like.destroy
+    #redirect_to root_path
+    @comment = Comment.find(params[:comment_id])
   end
 
   private
 
   def find_post
     # debugger
-    if post = (params[:like_on_type] == "Post")
-      @post = Post.find(params[:post_id])
-    elsif comment = (params[:like_on_type] == "Comment")
-      @comment = Comment.find(params[:comment_id])
-    end
+      
   end
 
 end
