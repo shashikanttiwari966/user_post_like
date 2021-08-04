@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
     <% if current_user.role?("User") %>
         <p class="text-info p-3">
-            <%= link_to 'New post', new_post_path(current_user)%> |  
-            <%= link_to 'show post', post_path(id:current_user)%>
+            <%= link_to 'New post', new_post_path(id:current_user), class:"text-info"%> |  
+            <%= link_to 'show post', post_path(id:current_user),class:"text-success"%>
         </p>                          
         <hr><h3>Hii!, User.</h3>
         <%= render 'show_post', posts:@postall%>

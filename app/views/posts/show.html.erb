@@ -1,21 +1,16 @@
  | <%= link_to 'Back', posts_path %><hr>
-<% @post.each_with_index do |post,index| %>
-<div style="border:1px solid gray; padding: 15px 10px;">
-      <%= index+1 %>. 
-      <strong>Title:</strong>
-      <%= post.title %> | 
-
-      <b id="b">Created : <%= post.created_at.strftime('%b %d, %Y') %></b>
-
-      <strong>Description:</strong>
-      <%= post.description %> 
-
+<% @post.each do |post| %>
+<div style="border:1px solid gray; padding: 15px 10px;" class="bg-info">
+      <p>
+        <strong>Title:</strong>
+        <%= post.title %>
+      </p> 
+      <b id="b">Created : <%= post.created_at.strftime('%b %d, %Y') %></b> 
       <p><%= image_tag post.image.url, width:150, height:100 %></p>
       <p>
-        <%= link_to 'Comment', new_comment_path(user_id:post.user_id,post_id:post.id) %> | 
-        <%= render 'likes/like', post:post%>
+        <strong>Description:</strong>
+        <%= post.description %>
       </p>
-
       <p>
         <b>comments:</b><br>
         <ul>

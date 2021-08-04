@@ -5,11 +5,11 @@
       <div class="col-sm-4 p-3 border">
           <div class="grid">
               <h6 class="text-secondary" style="font-weight: 1000;">Title : <%= post.title %></h6>
-        	    <%= image_tag post.image.url, width:350, height:200%>
+        	    <%= image_tag post.image.url, width:350, height:200, class:"rounded"%>
            	  <p class="text-info pt-3"><b>Description : </b><%= post.description %></p> 
-           	  <span id="like_or_unlike_<%= post.id%>">
+           	  <div id="like_or_unlike_<%= post.id%>">
                   <%= render 'likes/like', post:post%>
-              </span> 
+              </div> 
               <%#= link_to 'Comment', new_comment_path(user_id:post.user_id,post_id:post.id) %>
               <div class="comment-form">
                   <%= form_for Comment.new, remote:true do |f| %>
