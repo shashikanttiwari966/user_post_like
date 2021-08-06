@@ -14,6 +14,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .login-button{
+  border: 2px solid #28a745;
+  border-radius: 20px;
+ }
  div.paleBlueRows {
   border: 1px solid #FFFFFF;
   width: 100%;
