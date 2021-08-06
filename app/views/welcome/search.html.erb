@@ -1,0 +1,20 @@
+<h3 class="pb-3 pt-2">Search Result</h3>
+
+<ul class="pagination">
+<li class="page-item"><%= will_paginate @results, class:"page-link" %></li>
+</ul>
+<% @results.each do |result| %>
+<div class="search-card card p-3 mr-5 mb-2 w-25 float-left">
+	<div class="card_header p-2">  
+        <%= image_tag result.image.url, width:250, height:200, class:"rounded" %>
+    </div>
+
+	<div class="card_body p-2">  
+        <h4>Title: <%= result.title %></h4>
+    </div>
+
+    <div class="card_footer p-2">  
+        <b>Description : </b><%= result.description %>
+    </div>
+</div>        
+<% end %>
