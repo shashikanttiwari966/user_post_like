@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2021_08_06_112132) do
     t.integer "image_file_size"
     t.string "image_content_type"
     t.datetime "image_updated_at"
-    t.string "image"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
