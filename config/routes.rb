@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome/index'
   resources :posts
-  devise_for :users, :controllers => {:sessions => "sessions",:registrations => "registrations"}
+  devise_for :users, :controllers => {:sessions => "sessions",:registrations => "registrations", omniauth_callbacks: 'users/omniauth'}
   resources :comments
   resources :likes
   get '/search' => 'welcome#search', :as => 'search_post'

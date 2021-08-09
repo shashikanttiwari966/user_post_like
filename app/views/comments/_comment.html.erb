@@ -2,7 +2,7 @@
 <h5>Comments : </h5>
   <ul>
       <% post.comments.each do |c|%>
-          <li style="list-style: square;">
+          <li style="list-style: square;list-style-position: inside;">
             <%= c.comment %>
             <span id="like_comment_<%= c.id %>">
                 <%= render 'likes/like_comment', c:c %>

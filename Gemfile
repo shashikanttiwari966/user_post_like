@@ -19,6 +19,12 @@ gem "paperclip"
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+# gem 'omniauth'
+gem 'omniauth-facebook', '~> 4.0'
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+
+gem 'activerecord-session_store', '~> 1.0'
 
 gem 'devise'
 gem 'jquery'
@@ -53,6 +59,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'dotenv', '~> 2.2.1'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end

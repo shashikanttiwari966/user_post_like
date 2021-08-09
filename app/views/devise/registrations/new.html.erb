@@ -1,39 +1,60 @@
-<h2>Sign up</h2>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+      <div class="form">  
+      <span class="login100-form-title p-b-49">
+         Signup
+      </span>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+        <span class="label-input100"><%= f.label :email %></span>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf200;"></span>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+        <span class="label-input100"><%= f.label :user_name %></span>
+        <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf206;"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input m-b-23">
+        <span class="label-input100"><%= f.label :password %></span>
+        <%= f.password_field :password, autocomplete: "new-password", class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf190;"></span>
+      </div>
+
+      <div class="text-right" style="margin: 0px 90px;">
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      </div>
+
+      <div class="wrap-input100">
+        <span class="label-input100"><%= f.label :password_confirmation %></span>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf190;"></span>
+      </div>
+
+      <div class="radio-button pb-5">
+        <span class="label-input100 pb-2"><%= f.label :role %></span>
+        <span class="pr-5"><%= f.radio_button :role, "User"%> User</span>
+        <span><%= f.radio_button :role, "Creator"%> Creator</span>
+      </div>
+
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+              <div class="login100-form-bgbtn"></div>
+                    <%= f.submit "Sign up", class:"loginbtn w-100 p-3" %>
+              </div> 
+        </div>           
+      </div>
+    <% end %>
+      <div class="wrap-input100 pt-5 pb-5">
+      <%= render "devise/shared/links" %>
+      </div>    
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-
-    <%= f.label :role %>
-    <%= f.radio_button :role, "User" %>User
-    <%= f.radio_button :role, "Creator" %>Creator<br><br>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

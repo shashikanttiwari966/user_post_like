@@ -1,15 +1,15 @@
 <%#debugger%>
 <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
 <% if !post.likes.where(user_id:current_user.id).blank? %>
-      <span class="btn btn-primary w-25 mb-3 text-dark" id="unlike">
-            <span id="likkke_<%=post.id%>"><%= post.likes.count %></span>
-            <%= link_to "Unlike", like_path(id:pre_like, post_id: post.id), method: :delete, remote: true, id: "unlike_post_#{post.id}" %>
-      </span>
+    <span class="btn btn-primary w-25 mb-3 " id="unlike"style="font-weight:1000;">
+        <span id="likkke_<%=post.id%>"><%= post.likes.count %></span>
+        <%= link_to "Unlike", like_path(id:pre_like, post_id: post.id), method: :delete, remote: true, class:"text-dark"  %>
+    </span>
 <% elsif post.likes.where(user_id:current_user.id).blank? %>
-      <span class="btn btn-primary w-25 mb-3 text-dark" id ="like">
-            <span id="likkke_<%=post.id%>"><%= post.likes.count %></span>
-            <%= link_to "Like", likes_path(post_id:post.id,like_on_type:"Post"), method: :post, remote:true, id: "like_post_#{post.id}" %>
-      </span>
+    <span class="btn btn-primary w-25 mb-3" id ="like" style="font-weight:1000;">
+        <span id="likkke_<%=post.id%>"><%= post.likes.count %></span>
+        <%= link_to "Like", likes_path(post_id:post.id,like_on_type:"Post"), method: :post, remote:true, class:"text-dark" %>
+    </span>
 <% end %>
 
 

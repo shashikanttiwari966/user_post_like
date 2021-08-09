@@ -9,7 +9,7 @@
    <%= form_for(resource = User.new , as: resource_name, url: session_path(resource_name)) do |f| %>
          <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
                <span class="label-input100"><%= f.label "Username/Email" %></span>
-               <%= f.text_field :login, class:"input100",placeholder:"Type your username"%>
+               <%= f.text_field :login, class:"input100",placeholder:"Type your username", autocomplete:"off"%>
                <span class="focus-input100" data-symbol="&#xf206;"></span>
          </div>
 
@@ -49,9 +49,12 @@
    </span>
 </div>
 <div class="icons">
-   <a href="#" class="login100-social-item bg1">
-      <i class="fa fa-facebook"></i>
-   </a>
+   <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+         <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),method: :post, class:"login100-social-item bg1" %>
+            <i class="fa fa-facebook"></i>
+      <% end -%>
+   <% end -%>  
    <a href="#" class="login100-social-item bg2">
       <i class="fa fa-twitter"></i>
    </a>

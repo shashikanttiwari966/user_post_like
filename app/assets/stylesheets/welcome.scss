@@ -231,6 +231,12 @@ iframe {
   margin-left: 60px;
 }
 
+.radio-button {
+  width: 70%;
+  position: relative;
+  margin-left: 60px;
+}
+
 .label-input100 {
   font-family: Poppins-Regular;
   font-size: 14px;
@@ -256,7 +262,7 @@ iframe {
 /*---------------------------------------------*/
 .focus-input100 {
   position: absolute;
-  margin: 13px 0px;
+  margin: 0px 0px 0px 0px;
   display: block;
   width: 100%;
   height: 100%;

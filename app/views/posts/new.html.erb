@@ -1,6 +1,17 @@
-<hr>
-<h1>New Post</h1>
+<br>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+    	<div class="form">
+    		<span class="login100-form-title p-b-49">
+         New Post
+    		</span>
+					<%= render 'form', post: @post %>
 
-<%= render 'form', post: @post %>
-
-<%= link_to 'Back', root_path %>
+				<div style="padding: 10px 60px;">
+					<%= link_to 'Back', root_path, class:"" %>
+				</div>
+			</div>	
+		</div>
+  </div>
+</div>

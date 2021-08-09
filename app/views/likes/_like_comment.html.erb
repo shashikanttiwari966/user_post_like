@@ -3,6 +3,6 @@
     <span><%= c.likes.count %></span>
     <%= link_to "Unlike", destroy_like_comment_path(id: pre_like,comment_id:c.id), method: :delete, remote:true %>
 <% elsif c.likes.where(user_id:current_user.id).blank? %>
-    <span><%= c.likes.count %></span>
-    <%= link_to "Like", create_like_comment_path(comment_id:c.id,like_on_type:"Comment"), method: :post, remote:true %>
+    | <span><%= c.likes.count %></span>
+    <%= link_to "Like", create_like_comment_path(comment_id:c.id,like_on_type:"Comment"), method: :post, remote:true %> 
 <% end %>
