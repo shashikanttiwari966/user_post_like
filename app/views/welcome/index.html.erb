@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<% if user_signed_in? %>
-<div class="pt-2 w-50">
-  <%= form_tag search_post_path, :method => 'get' do %>
-      <%= text_field_tag :search, params[:search], class:"form-control w-50 d-inline" %>
-      <%= submit_tag "Search", :title => nil, class:"btn btn-dark w-25 "%>
-  <% end %>
-</div>
-=======
-
->>>>>>> master
-
 <% if user_signed_in? %>
 <div class="body">
     <% if current_user.role?("User") %>
