@@ -1,48 +1,80 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= link_to "Back", root_path %>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+      <div class="form">  
+      <span class="login100-form-title p-b-49">
+      Edit <%= resource_name.to_s.humanize %></span>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+        <span class="label-input100"><%= f.label :email %></span>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", disabled:"disabled", class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf200;"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+        <span class="label-input100"><%= f.label :user_name %></span>
+        <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf206;"></span>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="wrap-input100 validate-input m-b-23">
+        <span class="label-input100"><%= f.label :password %></span>
+         <%= f.password_field :password, autocomplete: "new-password", disabled:"disabled", class:"input100",placeholder:"leave blank if you don't want to change it" %>
+         <span class="focus-input100" data-symbol="&#xf190;"></span>
+      </div>
+
+      <div class="text-right" style="margin: 0px 90px;">
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      </div>
+
+      <div class="wrap-input100">
+        <span class="label-input100"><%= f.label :password_confirmation %></span>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", disabled:"disabled", class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf190;"></span>
+      </div>
+
+      <div class="wrap-input100">
+        <span class="label-input100"><%= f.label :current_password %></span>
+        <%= f.password_field :current_password, autocomplete: "current-password", disabled:"disabled" , class:"input100" %>
+        <span class="focus-input100" data-symbol="&#xf190;"></span>
+      </div>
+
+      <div class="text-right" style="margin: 0px 90px;">
+        <i>(we need your current password to confirm your changes)</i><br />
+      </div>
+
+      <div class="radio-button pb-5">
+        <span class="label-input100 pb-2"><%= f.label :role %></span>
+        <span class="pr-5"><%= f.radio_button :role, "User", disabled:"disabled"%> User</span>
+        <span><%= f.radio_button :role, "Creator", disabled:"disabled"%> Creator</span>
+      </div>
+
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <%= f.submit "Update", class:"loginbtn w-100 p-3" %> 
+        </div>           
+      </div>
+      <% end %>
+
+      <div class="wrap-input100 validate-input" style="margin:30px 60px;">
+        <h3>Cancel my account</h3>
+
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger w-100" %></p>
+      </div>
+
+      </div>
+    </div>
   </div>
+</div>    
 
-  <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
