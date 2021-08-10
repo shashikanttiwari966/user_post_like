@@ -1,6 +1,6 @@
 
 class WelcomeController < ApplicationController
-  # protect_from_forgery except: :index
+  before_action :admin_user, only: [:show_users]
 
   def index
    @posts = Post.paginate(page: params[:page], per_page: 6)
@@ -24,5 +24,33 @@ class WelcomeController < ApplicationController
          end
       end  
     end 
+  end
+
+  def show_pdf
+    
+  end
+
+  def show_users
+    @users = User.all
+    # respond_to do |format|
+    #   format.html
+    #   format.pdf
+    #       pdf = Prawn::Document.new
+    #       pdf.text "hello rails"
+    #       send_data pdf.render
+    # end
+  end
+
+  private
+
+  def admin_user
+      if user_signed_in?
+        if current_user.admin?
+          return true
+        else 
+          flash[:alert] = "You have not permission for this page."
+          redirect_to root_path
+        end
+      end
   end
 end
