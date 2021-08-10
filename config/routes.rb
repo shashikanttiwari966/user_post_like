@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/search' => 'welcome#search', :as => 'search_post'
   post "/create_like_comment" => 'likes#create_like_comment', as: 'create_like_comment'
   delete "/destroy_like_comment" => 'likes#destroy_like_comment', as: 'destroy_like_comment'
+  get '/show_pdf' => 'welcome#show_pdf', :as => 'show_pdf'
 end

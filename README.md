@@ -8,6 +8,8 @@ Things you may want to cover:
 * Ruby version
 
 * System dependencies
+  yarn add jquery
+  yarn add @popperjs/core
 
 * Configuration
 
