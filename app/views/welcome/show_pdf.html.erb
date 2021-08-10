@@ -1,99 +1,96 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
 <style type="text/css">
 
-#upload-button {
-	width: 150px;
-	display: block;
-	margin: 20px auto;
-}
+	#upload-button {
+		width: 150px;
+		display: block;
+		margin: 20px auto;
+	}
 
-#file-to-upload {
-	display: none;
-}
+	#file-to-upload {
+		display: none;
+	}
 
-#pdf-main-container {
-	width: 600px;
-	margin: 20px auto;
-}
+	#pdf-main-container {
+		width: 600px;
+		margin: 20px auto;
+	}
 
-#pdf-loader {
-	display: none;
-	text-align: center;
-	color: #999999;
-	font-size: 13px;
-	line-height: 100px;
-	height: 100px;
-}
+	#pdf-loader {
+		display: none;
+		text-align: center;
+		color: #999999;
+		font-size: 13px;
+		line-height: 100px;
+		height: 100px;
+	}
 
-#password-container {
-	padding: 50px 0;
-	box-sizing: border-box;
-	text-align: center;
-	display: none;
-}
+	#password-container {
+		padding: 50px 0;
+		box-sizing: border-box;
+		text-align: center;
+		display: none;
+	}
 
-#pdf-password {
-	border: 1px solid #cccccc;
-	padding: 5px;
-	margin: 0 10px 0 0;
-	width: 100px;
-}
+	#pdf-password {
+		border: 1px solid #cccccc;
+		padding: 5px;
+		margin: 0 10px 0 0;
+		width: 100px;
+	}
 
-#submit-password {
-	background: none;
-	border: 1px solid #cccccc;
-	padding: 4px;
-}
+	#submit-password {
+		background: none;
+		border: 1px solid #cccccc;
+		padding: 4px;
+	}
 
-#password-message {
-	text-align: center;
-	color: red;
-	margin: 10px 0 0 0;
-	font-size: 13px;
-}
+	#password-message {
+		text-align: center;
+		color: red;
+		margin: 10px 0 0 0;
+		font-size: 13px;
+	}
 
-#pdf-contents {
-	display: none;
-}
+	#pdf-contents {
+		display: none;
+	}
 
-#pdf-meta {
-	overflow: hidden;
-	margin: 0 0 20px 0;
-}
+	#pdf-meta {
+		overflow: hidden;
+		margin: 0 0 20px 0;
+	}
 
-#pdf-buttons {
-	float: left;
-}
+	#pdf-buttons {
+		float: left;
+	}
 
-#page-count-container {
-	float: right;
-}
+	#page-count-container {
+		float: right;
+	}
 
-#pdf-current-page {
-	display: inline;
-}
+	#pdf-current-page {
+		display: inline;
+	}
 
-#pdf-total-pages {
-	display: inline;
-}
+	#pdf-total-pages {
+		display: inline;
+	}
 
-#pdf-canvas {
-	border: 1px solid rgba(0,0,0,0.2);
-	box-sizing: border-box;
-}
+	#pdf-canvas {
+		border: 1px solid rgba(0,0,0,0.2);
+		box-sizing: border-box;
+	}
 
-#page-loader {
-	height: 100px;
-	line-height: 100px;
-	text-align: center;
-	display: none;
-	color: #999999;
-	font-size: 13px;
-}
+	#page-loader {
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		display: none;
+		color: #999999;
+		font-size: 13px;
+	}
 
 </style>
-</head>
 
 <body>
 
@@ -121,7 +118,6 @@
 </div>
 
 <script>
-
 	var __PDF_DOC,
 		__CURRENT_PAGE,
 		__TOTAL_PAGES,
@@ -241,4 +237,6 @@
 	});
 
 </script>
+
+
 

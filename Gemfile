@@ -17,8 +17,15 @@ gem 'will_paginate', '~> 3.1.0'
 # gem "paperclip", "~> 6.0.0"
 gem "paperclip"
 
+#Use for pdf
+gem 'prawn'
+
+#for confimation
+gem 'letter_opener_web', group: :development
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+
 # gem 'omniauth'
 gem 'omniauth-facebook', '~> 4.0'
 gem "omniauth-rails_csrf_protection", "~> 1.0"

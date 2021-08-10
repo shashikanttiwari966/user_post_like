@@ -1,9 +1,14 @@
 <div class="header bg-dark p-3 rounded-lg" style="height: 100px;">
   <h2 class="text-success">Hello Rails!</h2>
   <% if user_signed_in? %>
-    <p class="text-light float-left mb-3">Logged in as <strong><%= current_user.email %></strong>.</p>
+    <p class="text-light float-left mb-3">
+        <span>Logged in as <strong><%= current_user.email %></strong>.
+          <b class="text-success">[<%= current_user.role %>]</b>
+        </span>
+    </p>
     <p class="text-light float-right mb-3">
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link text-light' %> |
+
+    <%= link_to 'Edit profile', edit_user_registration_path(id:current_user.id), :class => 'navbar-link text-light' %> |
     <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link text-light'  %></p>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link text-light'  %> |
