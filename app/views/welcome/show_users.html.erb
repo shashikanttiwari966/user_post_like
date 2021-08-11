@@ -1,4 +1,15 @@
-<br>
+<div class="form-inline mt-3 mb-3">
+  <div class="float-left">
+  <%= link_to "back", root_path, class: 'btn btn-dark text-light mr-3' %>
+  <%= link_to "Export", show_users_path(format: "csv"), class: 'btn btn-dark mr-3' %>
+  </div>
+  <div class="float-right border pt-2 pl-3 pr-3">
+  <%= form_tag(import_path,:multipart => true) do %>
+    <%= file_field_tag :file%>
+    <%= submit_tag "import", class:"btn btn-primary mb-2" %>
+  <% end %>
+  </div>
+</div>  
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -19,9 +30,9 @@
         <td><%= u.email %></td>
         <td><%= u.role %></td>
         <td><%= u.admin %></td>
-        <td>
-          <%= link_to "Edit",edit_user_registration_path(id:u.id), class:"btn btn-success text-light" %>
+        <td><center><%= link_to "Edit",edit_user_registration_path(id:u.id), class:"btn btn-success text-light" %>
           <%= link_to "Delete",user_registration_path(id:u.id),method: :delete, class:"btn btn-danger text-light", data: { confirm: 'Are you sure?' } %>  
+          <%= link_to "Posts",post_path(id:u.id), class:"btn btn-primary text-light"%><center>  
         </td>
       <% end %>  
     </tr>

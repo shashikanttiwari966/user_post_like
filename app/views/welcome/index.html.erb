@@ -8,7 +8,7 @@
         <%= render 'show_post', posts:@postall%>
 
     <% elsif current_user.role?("Admin") %>
-        <nav class="navbar navbar-dark bg-dark mt-2 mb-3">
+        <nav class="navbar navbar-dark bg-dark mt-2 mb-3 rounded-lg">
             <%= link_to 'New post', new_post_path(id:current_user), class:"text-light btn btn-dark" %>
             <%= link_to 'View all post', posts_path, class:"text-light btn btn-dark"%>
             <%= link_to "User's", show_users_path, class:"text-light btn btn-dark"%>

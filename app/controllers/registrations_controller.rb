@@ -16,4 +16,23 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
   end
 
+  def update
+    debugger
+    @user = User.find(params[:user][:id])
+    @user = @user.update(account_update_params)
+    redirect_to root_path
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
+  end
+
+  private
+
+  def account_update_params
+    params.require(:user).permit(:id, :user_name, :email, :admin, :role, :password_confirmation, :current_password)
+  end
+
 end 

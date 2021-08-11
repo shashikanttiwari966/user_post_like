@@ -5,11 +5,9 @@ class WelcomeController < ApplicationController
   def index
    @posts = Post.paginate(page: params[:page], per_page: 6)
    @postall = Post.all
-   # @post = Post.search(params[:search])
   end
 
   def search
-    # debugger
     if params[:search].blank?  
       redirect_to(root_path, alert: "Empty field!") and return  
     else  
@@ -32,13 +30,15 @@ class WelcomeController < ApplicationController
 
   def show_users
     @users = User.all
-    # respond_to do |format|
-    #   format.html
-    #   format.pdf
-    #       pdf = Prawn::Document.new
-    #       pdf.text "hello rails"
-    #       send_data pdf.render
-    # end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv }
+    end   
+  end
+
+  def import
+    User.import(params[:file])
+    redirect_to root_path, notice:"User imported!"
   end
 
   private

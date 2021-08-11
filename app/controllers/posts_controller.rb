@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   USERS = {"role" => "Admin"}
   include PostsHelper
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ edit update destroy ]
   before_action :admin_user, only: [:index, :edit, :destroy]
   # GET /posts or /posts.json
   def index
@@ -11,7 +11,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @post = current_user.posts
+    @user = User.find(params[:id])
+    @post = @user.posts
   end
 
   # GET /posts/new

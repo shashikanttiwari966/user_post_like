@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   resources :comments
   resources :likes
+  post '/import' => 'welcome#import', :as=>'import'
   get '/search' => 'welcome#search', :as => 'search_post'
   get '/show_pdf' => 'welcome#show_pdf', :as => 'show_pdf'
   get '/show_users' => 'welcome#show_users', :as => 'show_users'
