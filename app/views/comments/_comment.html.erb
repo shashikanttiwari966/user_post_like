@@ -3,7 +3,7 @@
   <ul>
       <% post.comments.each do |c|%>
           <li style="list-style: square;list-style-position: inside;">
-            <%= c.comment %>
+            <%= c.comment %> _<i>by: <%= comment_by(c.user_id) %></i><br>
             <span id="like_comment_<%= c.id %>">
                 <%= render 'likes/like_comment', c:c %>
             </span>  

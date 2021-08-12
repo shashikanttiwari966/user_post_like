@@ -13,6 +13,22 @@ hr{
 	background-image: image-url("bg-01.jpg")
 }
 
+.inputfield{
+  border-radius: 20px;
+}
+
+.fa-edit:before, .fa-pencil-square-o:before {
+    content: "\f044";
+    padding: 5px;
+}
+.fa-trash:before {
+    content: "\f1f8";
+    padding: 5px;
+}
+.fa-sticky-note:before {
+    content: "\f249";
+    padding: 5px;
+}
 
 
 
@@ -50,6 +66,7 @@ hr{
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
+  font-family: Poppins-Regular, sans-serif;
 }
 
 body, html {

@@ -12,5 +12,4 @@ role2 = Role.create(name:"User")
 role3 = Role.create(name:"Creator")
 
 user = User.create(email:"admin@gmail.com", user_name:"admin123", admin:true, role:"Admin", password:"123456", password_confirmation:"123456",confirmed_at:Time.now.utc)
-
 user.user_roles.create(role: role1)

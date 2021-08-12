@@ -1,8 +1,10 @@
+<div style="padding:0px 20px; font-weight: 1000;">
 <% pre_like = c.likes.find { |like| like.user_id == current_user.id} %>
 <% if !c.likes.where(user_id:current_user.id).blank?%>
     <span><%= c.likes.count %></span>
     <%= link_to "Unlike", destroy_like_comment_path(id: pre_like,comment_id:c.id), method: :delete, remote:true %>
 <% elsif c.likes.where(user_id:current_user.id).blank? %>
-    | <span><%= c.likes.count %></span>
+    <span><%= c.likes.count %></span>
     <%= link_to "Like", create_like_comment_path(comment_id:c.id,like_on_type:"Comment"), method: :post, remote:true %> 
 <% end %>
+</div>

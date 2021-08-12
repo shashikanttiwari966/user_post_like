@@ -8,7 +8,7 @@
 <% elsif post.likes.where(user_id:current_user.id).blank? %>
     <span class="btn btn-primary w-25 mb-3" id ="like" style="font-weight:1000;">
         <span id="likkke_<%=post.id%>"><%= post.likes.count %></span>
-        <%= link_to "Like", likes_path(post_id:post.id,like_on_type:"Post"), method: :post, remote:true, class:"text-dark" %>
+        <%= link_to "Like", likes_path(post_id:post.id,like_on_type:"Post"), method: :post, remote:true, class:"text-dark " %>
     </span>
 <% end %>
 

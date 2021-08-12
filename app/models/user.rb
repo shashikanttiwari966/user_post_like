@@ -27,12 +27,6 @@ class User < ApplicationRecord
     end
   end
 
-  # def self.import(file)
-  #   CSV.foreach(file.path, headers: true) do |row|
-  #     EquipmentType.create! row.to_hash
-  #   end
-  # end
-
   def self.to_csv
     CSV.generate do |csv|
       csv << column_names
@@ -43,7 +37,6 @@ class User < ApplicationRecord
   end
 
   def self.import(file)
-    debugger
    CSV.foreach(file.path, headers: true) do |row|
       user = User.create! row.to_hash
       user.user_roles.create(role:Role.second)

@@ -27,7 +27,7 @@
 development:
  adapter: postgresql
  host: localhost
- database: user_post_dev_01
+ database: user_post_dev_02
  username: postgres
  password: 12345678
 

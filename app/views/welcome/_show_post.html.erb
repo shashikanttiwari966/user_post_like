@@ -11,22 +11,24 @@
                   <%= render 'likes/like', post:post%>
               </div> 
               <%#= link_to 'Comment', new_comment_path(user_id:post.user_id,post_id:post.id) %>
+
               <div class="comment-form">
                   <%= form_for Comment.new, remote:true do |f| %>
                   <%= f.hidden_field :user_id , value:current_user.id %>
                   <%= f.hidden_field :post_id, value:post.id %>
                   <div class="field">
-                  <%= f.text_field :comment, class:"form-control" %>
+                  <%= f.text_field :comment, class:"form-control inputfield pl-4" %>
                   </div>
                   <div class="actions">
-                  <%= f.submit "Create Comment",class:"btn btn-success"%>
+                  <%= f.submit "Create Comment",class:"btn btn-success inputfield pl-4 pr-4"%>
                   </div>
                   <% end %>
               </div>
 
-              <div id="comment_<%= post.id%>">
+              <div id="comment_<%= post.id%>" class="p-2">
                  <%= render partial:'comments/comment',locals: {post:post} %>
               </div>
+
           </div>  
       </div>
       <% end %>

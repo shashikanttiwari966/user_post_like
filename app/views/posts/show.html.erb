@@ -1,38 +1,36 @@
+<%= link_to 'Back', posts_path %>
 <% if @user.posts %>
 <div class="card">
-  <%= link_to 'Back', posts_path %>
   <% @post.each do |post| %>
-  <div style="border:1px solid gray; padding: 15px 10px;" class="mr-1">
-      <p>
+  <div class="grid border p-3">
+      <p class="h3">
         <strong>Title:</strong>
         <%= post.title %>
       </p> 
       <b id="b">Created : <%= post.created_at.strftime('%b %d, %Y') %></b> 
-      <p><%= image_tag post.image.url, width:150, height:100 %></p>
+      <p><%= image_tag post.image.url, width:200, height:100, class:"img-thumbnail" %></p>
       <p>
         <strong>Description:</strong>
         <%= post.description %>
       </p>
+
+      <p class="p-2">
+      <% if current_user.admin? %>
+      <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-success" %>
+      <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm:'Are you sure?'}, class:"btn btn-danger"%>
+      <% end %>
+      </p>
+
       <p>
-        <b>comments:</b><br>
+        <b style="font-size:18px;">comments:</b><br>
         <ul>
             <% post.comments.each do |c|%>
                 <li style="font-size: 12px;"><%= c.comment %> | 
-                  <% if c.likes.count == 1%>
-                    <%= c.likes.count %>
-                    <%= link_to "Unlike", like_path(comment_id:c.id,like_comment_id: c.likes.first.id), method: :delete, remote:true %>
-                  <% else %>
-                    <%= link_to "Like", likes_path(comment_id:c.id), method: :post, remote:true %>
-                  <% end %>
+                  <%= c.likes.count %> <%= (c.likes.count) == 1 ? "like" : "likes"%>
                 </li>
             <% end %>
         </ul>
       </p>
-
-    <% if current_user.admin? %>
-      <%= link_to 'Edit', edit_post_path(@post) %> | 
-      <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm:'Are you sure?'}%>
-    <% end %>
   </div><br>
   <% end %>
 </div>

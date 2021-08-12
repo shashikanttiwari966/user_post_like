@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  USERS = {"role" => "Admin"}
+  # USERS = {"role" => "Admin"}
   include PostsHelper
   before_action :set_post, only: %i[ edit update destroy ]
   before_action :admin_user, only: [:index, :edit, :destroy]

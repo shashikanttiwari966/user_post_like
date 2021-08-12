@@ -30,9 +30,9 @@
         <td><%= u.email %></td>
         <td><%= u.role %></td>
         <td><%= u.admin %></td>
-        <td><center><%= link_to "Edit",edit_user_registration_path(id:u.id), class:"btn btn-success text-light" %>
-          <%= link_to "Delete",user_registration_path(id:u.id),method: :delete, class:"btn btn-danger text-light", data: { confirm: 'Are you sure?' } %>  
-          <%= link_to "Posts",post_path(id:u.id), class:"btn btn-primary text-light"%><center>  
+        <td><center><%= link_to "Edit",edit_user_registration_path(id:u.id), class:"btn btn-success text-light fa fa-edit p-2" %>
+          <%= link_to "Delete",user_registration_path(id:u.id),method: :delete, class:"btn btn-danger text-light fa fa-trash p-2", data: { confirm: 'Are you sure?' } %>  
+          <%= link_to "Posts",post_path(id:u.id), class:"btn btn-primary text-light fa fa-sticky-note p-2"%><center>  
         </td>
       <% end %>  
     </tr>

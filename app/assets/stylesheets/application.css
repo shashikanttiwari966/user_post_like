@@ -27,7 +27,7 @@
 }
 .divTable.paleBlueRows .divTableCell, .divTable.paleBlueRows .divTableHead {
   border: 1px solid #FFFFFF;
-  padding: 3px 2px;
+  padding: 10px 2px;
 }
 
 .divTable.paleBlueRows .divTableRow:nth-child(even) {
