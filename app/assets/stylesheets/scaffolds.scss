@@ -38,6 +38,11 @@ div.actions {
 }
 .alert{
     color: red;
+    position: relative;
+    padding: 0rem 0rem;
+    margin-bottom: 0rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
 }
 .field_with_errors {
   padding: 2px;

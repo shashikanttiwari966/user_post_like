@@ -73,6 +73,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.stripe.secret_key = Rails.application.credentials.stripe[:development][:secret_key]
+  config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
+
  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
  # config.action_mailer.raise_delivery_errors = true
  config.action_mailer.perform_deliveries = true

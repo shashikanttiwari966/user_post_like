@@ -1,0 +1,32 @@
+<div class="row border p-2 m-1">
+	<div class="col-md-12 p-3 mb-3 bg-info">
+		<h6>Customer details-	</h6>
+	</div>
+
+	<div class="col-md-4 border">
+		<p>Email:<%= @customer.email %></p>
+	</div>
+
+	<div class="col-md-4 border">
+		<p>Address: <%= @customer.address %></p>
+	</div>
+
+	<div class="col-md-4 border">
+		<p>Balance: <%= @customer.balance %></p>	
+	</div>
+
+	<div class="col-md-4 border">
+		<p>Phone: <%= @customer.phone %></p>
+	</div>
+
+	<div class="col-md-4 border">
+		<p>Currency: <%= @customer.currency %></p>
+	</div>
+
+	<div class="col-md-4 border">
+		<p>Description: <%= @customer.description %></p>	
+	</div>
+</div>
+
+<%= link_to "subscriptions", welcome_index_path, class:"btn btn-primary mt-2"%>
+

@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
- # protect_from_forgery with: :null_session
+ require 'stripe'
+ require 'date'
+
+ Stripe.api_key = 'sk_test_51JNaUlSBn2OWJA3igYXVF62Ts0MPHiCtF6DnPm6sd5GDf1xQ4PnuFAOysZlBqlzEA1WV8Vbnp2IuXXXz5MbQRASa00NfEqWiFF'
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 

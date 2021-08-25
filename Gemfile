@@ -12,6 +12,8 @@ gem 'rails', '~> 6.1.4'
 # Use postgres as the database for Active Record
 gem 'pg'
 
+gem 'stripe-rails'
+
 gem 'will_paginate', '~> 3.1.0'
 
 # gem "paperclip", "~> 6.0.0"

@@ -1,0 +1,36 @@
+<div class="col-sm-4 mb-3 ">
+	<div class="card border border-info" style="box-shadow: 0px 0px 10px grey;">
+		<div class="card-header bg-info">
+			<h6>
+				<%= image_tag (Stripe::Product.retrieve(plan.product).images.first), width:30, height:30, class:"img-circle"%>
+				<%= Stripe::Product.retrieve(plan.product).name %>
+			</h6>
+		</div>
+		<div class="card-body">
+			<p class="para-billing"><b>Description:</b> <%= Stripe::Product.retrieve(plan.product).description %></p>
+			<p class="para-billing"><b>Active:</b> <%= Stripe::Product.retrieve(plan.product).active %></p>
+			<p class="para-billing"><b>Free trial:</b> <%= plan.trial_period_days %> days</p>
+
+			<h6 class="pt-3 pb-3 text-center">
+				<span class="border bg-warning pl-2 pr-2" style="border-radius:15px;"> 
+					₹<%= plan.amount/100 %> / <%= plan.interval %>
+				</span>
+			</h6>
+			<p class="para-billing"><b>Currency:</b> <%= plan.currency %></p>
+			<%# debugger%>		
+			<% if current_user.subscription.present? &&  current_user.subscription.stripe_plna_id == plan.id%>
+				<% if  current_user.subscription.status == "in-trial"%>
+					<%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
+        		<%= link_to "pay now", add_payment_method_path(amount:plan.amount/100,plan:plan.id), remote: true, class: "buy_button btn btn-primary mt-1"%>
+        	<%end%>
+        <%else%>
+				  <%= link_to "current plan", add_payment_method_path(amount:plan.amount/100,plan:plan.id), class: "buy_button btn btn-outline-dark disabled mt-1"%>
+      	<%end%>
+      <%else%>
+      		<%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
+        		<%= link_to "buy now", add_payment_method_path(amount:plan.amount/100,plan:plan.id), remote: true, class: "buy_button btn btn-primary mt-1"%>
+        <%end%>  
+      <% end %>
+		</div>	
+	</div>	
+</div>

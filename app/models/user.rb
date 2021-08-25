@@ -13,7 +13,9 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy 
   
-  has_many :likes, as: :like_on, dependent: :destroy 
+  has_many :likes, as: :like_on, dependent: :destroy
+
+  has_one :subscription, dependent: :destroy
 
   def role? user_role
     self.roles.collect(&:name).first == user_role

@@ -4,11 +4,14 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    @stripe = Stripe::Customer.create(email:params[:user][:email])
   	super
+    @user.update(stripe_id:@stripe.id)
   	if !@user.blank?
   	  @role = Role.find_by_name(params[:user][:role])
   	  @user_roles = @user.user_roles.create(role:@role)
-  	  # flash[:notice] = "Successfully create user role."
+      sign_in @user
+  	  redirect_to root_path
   	end
   end
 
@@ -17,7 +20,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    debugger
     @user = User.find(params[:user][:id])
     @user = @user.update(account_update_params)
     redirect_to root_path
