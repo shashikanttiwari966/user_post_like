@@ -123,6 +123,14 @@ GEM
       activesupport (>= 5.0.0)
     jquery (0.0.1)
     jwt (2.2.3)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
+    letter_opener_web (1.4.0)
+      actionmailer (>= 3.2)
+      letter_opener (~> 1.0)
+      railties (>= 3.2)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -177,7 +185,11 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
+    pdf-core (0.9.0)
     pg (1.2.3)
+    prawn (2.4.0)
+      pdf-core (~> 0.9.0)
+      ttfunk (~> 1.7)
     public_suffix (4.0.6)
     puma (5.3.2)
       nio4r (~> 2.0)
@@ -253,6 +265,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
+    ttfunk (1.7.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -295,11 +308,13 @@ DEPENDENCIES
   dotenv (~> 2.2.1)
   jbuilder (~> 2.7)
   jquery
+  letter_opener_web
   listen (~> 3.3)
   omniauth-facebook (~> 4.0)
   omniauth-rails_csrf_protection (~> 1.0)
   paperclip
   pg
+  prawn
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
