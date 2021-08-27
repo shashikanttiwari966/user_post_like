@@ -2,7 +2,7 @@ class BillingController < ApplicationController
    before_action :authenticate_user!
 
   def index
-   @user=current_user.email
+   @user = current_user.email
   end
 
   def customer_info
@@ -12,6 +12,7 @@ class BillingController < ApplicationController
 	def new_card
     @amount = params[:amount]
     @plan = params[:plan]
+    @trial_days = Stripe::Plan.retrieve('price_1JSImCSBn2OWJA3itaHDXMzv').trial_period_days
     respond_to do |format|
       format.js
     end
@@ -34,14 +35,17 @@ class BillingController < ApplicationController
         subscription.delete
       end
       #we delete all subscription that the customer has. We do this because we don't want that our customer to have multiple subscriptions
-
+      
       plan_id = params[:plan_id]
-
       subscription = Stripe::Subscription.create({customer: customer,items: [{plan: plan_id}]})
       #we are creating a new subscription with the plan_id we took from our form
       subscription.save
+
+      #update Subscription for end of free trial
+      trial_end = subscription.billing_cycle_anchor + subscription.items.first.plan.trial_period_days.days
+      update_sub = Stripe::Subscription.update(subscription.id,{trial_end: trial_end,})
       plan_ex_time = DateTime.now+subscription.items.first.plan.trial_period_days.to_i
-      # debugger
+
       if subscription.items.first.plan.trial_period_days == nil
         trial = false
       else
@@ -51,9 +55,10 @@ class BillingController < ApplicationController
       if subscriptions = current_user.subscription
       subscriptions.delete
       end
-      
-      @subscription = current_user.create_subscription(stripe_plna_id:subscription.items.first.plan.id, stripe_subscription_id:subscription.id, is_trial: trial,trial_expire_at:plan_ex_time,plan_expires_at:Time.at(subscription.current_period_end), status:subscription.status)
 
+      #create subscription for application
+      @subscription = current_user.create_subscription(stripe_plna_id:subscription.items.first.plan.id, stripe_subscription_id:subscription.id, is_trial: trial,trial_expire_at:Time.at(update_sub.trial_end),plan_expires_at:Time.at(subscription.current_period_end), status:update_sub.status)
+      # debugger
       redirect_to root_path, notice:"Subscribed plan"
   end
 end

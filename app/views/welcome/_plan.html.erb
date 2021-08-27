@@ -1,14 +1,14 @@
 <div class="col-sm-4 mb-3">
-	<div class="card border border-info">
+	<div class="card border border-info shadow-bx">
 		<div class="card-header bg-info">
-			<h4>Product: <%= Stripe::Product.retrieve(plan.product).name %></h4>
+			<h4>Product: <%= product_detail(plan.product).name %></h4>
 		</div>
 		
-		<div class="card-body text-center	">
+		<div class="card-body text-center">
 			<h6 class="pb-2"><u>product details</u>-</h6>
-			<p><b>Description:</b> <%= Stripe::Product.retrieve(plan.product).description %></p>
-			<p><b>Created:</b> <%= Stripe::Product.retrieve(plan.product).created %></p>
-			<p><b>Active:</b> <%= Stripe::Product.retrieve(plan.product).active %></p>
+			<p><b>Description:</b> <%= product_detail(plan.product).description %></p>
+			<p><b>Created:</b> <%= Time.at(product_detail(plan.product).created).strftime("%d %h %Y, %H:%M") %></p>
+			<p><b>Active:</b> <%= product_detail(plan.product).active %></p>
 
 			<h5 class="pt-3 pb-3 text-center">
 				<span class="border bg-warning pl-2 pr-2" style="border-radius:15px;"> 
@@ -18,7 +18,7 @@
 			<p style="text-transform: capitalize;"><b>Currency:</b> <%= plan.currency %></p>
 			
 			<%= form_tag id: "billing-create-payment-method" do  %>
-        <%= link_to "SignUp", new_user_registration_path(plan:Stripe::Product.retrieve(plan.product).id), class: "btn btn-primary text-light mt-3" %>
+        <%= link_to "SignUp", new_user_registration_path(plan:plan.id), class: "btn btn-primary text-light mt-3" %>
       <% end %>
 		</div>	
 	</div>	
