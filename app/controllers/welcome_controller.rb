@@ -1,10 +1,10 @@
 
 class WelcomeController < ApplicationController
   before_action :admin_user, only: [:show_users]
-
   def index
    @posts = Post.paginate(page: params[:page], per_page: 6)
    @postall = Post.all
+   @plans = Stripe::Plan.list.data.sort_by { |e| e[:amount] }
   end
 
   def search

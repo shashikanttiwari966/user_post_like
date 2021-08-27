@@ -1,47 +1,63 @@
 <% if user_signed_in? %>
 <div class="body">
     <% if current_user.role?("User") %>
-        <p class="text-light pt-3 pb-3">
-            <%= link_to 'New post', new_post_path(id:current_user), class:"btn btn-dark text-light"%>  
-            <%= link_to 'show post', post_path(id:current_user),class:"btn btn-dark text-light"%>
-        </p>                        
-        <%= render 'show_post', posts:@postall%>
-
+        <nav class="navbar navbar-dark bg-dark mt-2 mb-3 rounded-lg">
+            <div>
+                <%= link_to 'New post', new_post_path(id:current_user), class:"btn btn-dark text-light"%>
+                <%= link_to 'show post', post_path(id:current_user),class:"btn btn-dark text-light"%>
+            </div>
+            <div class="form-inline">
+                <%= form_tag search_post_path, :method => 'get' do %>
+                <%= text_field_tag :search, params[:search], class:"form-control mr-sm-0", type:"search", placeholder:"Search"%>
+                <%= submit_tag "Search", :title => nil, class:"btn btn-outline-info my-2 my-sm-0", type:"submit"%>
+                <% end %> 
+            </div>
+        </nav>                      
+        <%#= render 'show_post', posts:@postall%>
     <% elsif current_user.role?("Admin") %>
         <nav class="navbar navbar-dark bg-dark mt-2 mb-3 rounded-lg">
-            <%= link_to 'New post', new_post_path(id:current_user), class:"text-light btn btn-dark" %>
-            <%= link_to 'View all post', posts_path, class:"text-light btn btn-dark"%>
-            <%= link_to "User's", show_users_path, class:"text-light btn btn-dark"%>
-            <%= link_to "pdf data", show_pdf_path, class:"text-light btn btn-dark"%>
+            <div>
+                <%= link_to 'New post', new_post_path(id:current_user), class:"text-light btn btn-dark" %>
+                <%= link_to 'View all post', posts_path, class:"text-light btn btn-dark"%>
+                <%= link_to "User's", show_users_path, class:"text-light btn btn-dark"%>
+                <%= link_to "pdf data", show_pdf_path, class:"text-light btn btn-dark"%>
+            </div>
             <div class="form-inline">
-            <%= form_tag search_post_path, :method => 'get' do %>
-            <%= text_field_tag :search, params[:search], class:"form-control mr-sm-0", type:"search", placeholder:"Search"%>
-            <%= submit_tag "Search", :title => nil, class:"btn btn-outline-info my-2 my-sm-0", type:"submit"%>
-            <% end %>
+                <%= form_tag search_post_path, :method => 'get' do %>
+                <%= text_field_tag :search, params[:search], class:"form-control mr-sm-0", type:"search", placeholder:"Search"%>
+                <%= submit_tag "Search", :title => nil, class:"btn btn-outline-info my-2 my-sm-0", type:"submit"%>
+                <% end %>
             </div>
         </nav>
-        <%= render 'show_post', posts:@postall%>
+        <%#= render 'show_post', posts:@postall%>
     <% end %>
-
+    <div class="grid">
+            <div class="row">
+                <div class="ml-3 float-left w-25 bg-dark" style="height: 500px;">
+                    <%= link_to "customer_info", customer_info_path, class: "btn btn-dark d-inline-block w-100 text-light mt-5" %>
+                    <%= link_to "subscriptions", subscriptions_path, class: "btn btn-dark d-inline-block w-100" %>
+                    <%= link_to "your plans", add_payment_method_path, class: "btn btn-dark d-inline-block w-100" %>    
+                </div>
+                <div class="col-sm float-right">
+                    <div class="row text-center">
+                    <% @plans.each do |plan| %>
+                        <%= render 'welcome/billing', plan:plan %>
+                    <%end%>
+                    </div>
+                </div>
+            </div>
+        </div>
 <% end %>
+
 <br><br>
 </div>
 
 <% if !user_signed_in? %>
-  <table>  
-  <% @posts.each_slice(3)  do |posts| %>
-      <tr>
-        <% posts.each  do |post| %>
-        <td><%= image_tag post.image.url, width:350, height:200%>
-            <h4>
-                <center><%= post.title %></center>
-            </h4>
-        </td>
-        <% end %>
-      </tr>
-  <% end %>
-  </table>
-  <%= will_paginate @posts%>
-<%end %>
-
-
+    <div class="grid">
+        <div class="row">
+        <% @plans.each do |plan| %>
+        <%= render 'welcome/plan', plan:plan %>
+        <%end%>
+        </div>
+    </div>
+<%end%>     
