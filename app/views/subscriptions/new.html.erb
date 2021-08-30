@@ -1,0 +1,53 @@
+<div class="container">
+<div class="p-5 mt-1">
+	<h1 class="text-center">New subscriptions</h1>
+	<div class="subscription-form">
+		<div class="p-5 border border-success">
+		<%= form_for @subscription do |f|%>
+
+			<div class="form-group">
+				<%= f.label :stripe_id %>
+				<%= f.text_field :stripe_id, value:@user.stripe_id, class:"form-control mb-4" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label "stripe plan" %>
+				<%= f.text_field :stripe_plna_id, class:"form-control mb-4" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :stripe_subscription_id %>
+				<%= f.text_field :stripe_subscription_id, class:"form-control mb-4" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :is_trial %>
+				<%= f.select :is_trial, ["true"], class:"select" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :trial_expire_at %>
+				<%= f.date_field :trial_expire_at, class:"form-control mb-4" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :plan_expires_at %>
+				<%= f.date_field :plan_expires_at, class:"form-control mb-4" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :status %>
+				<%= f.select :status, ["free trial", "hold", "pay"], class:"select" %>
+			</div>
+
+			<p class="text-center"><%= f.submit "Subscribe", class:"btn btn-success w-50" %></p>
+		<% end %>
+	</div>
+	</div>
+</div>
+</div>
+
+
+
+
+

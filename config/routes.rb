@@ -20,8 +20,6 @@ Rails.application.routes.draw do
   post "/subscribe" => "billing#subscribe", as: :create_payment_method
   
   # add card
-
-  get '/success' => 'billing#success', as: :success
   get '/customer_info' => 'billing#customer_info', as: :customer_info
 end
 

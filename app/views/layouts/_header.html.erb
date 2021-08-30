@@ -2,6 +2,7 @@
   <h2 class="text-success">Hello Rails!</h2>
   <% if user_signed_in? %>
     <p class="text-light float-left mb-3">
+        <i class="fa fa-user bg-success p-1" style="border-radius:20px"></i>
         <span>Logged in as <strong><%= current_user.email %></strong>.
           <b class="text-success">[<%= current_user.role %>]</b>
         </span>

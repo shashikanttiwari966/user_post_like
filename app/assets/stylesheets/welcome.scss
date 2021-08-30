@@ -1,7 +1,21 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+.shadow-bx{
+  transition: all .25s ease-in-out;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.3);
+}
+.shadow-bx:hover{
+  transform: scale(1.03, 1.03);
+    text-decoration: none;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.3);
+}
+.btn:hover{
+  position: 3px 3px;
+}
+.disabled-link {
+        pointer-events: none;
+    }
 hr{
 	border: 1px solid gray;
 }

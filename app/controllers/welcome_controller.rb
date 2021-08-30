@@ -1,4 +1,3 @@
-
 class WelcomeController < ApplicationController
   before_action :admin_user, only: [:show_users]
   def index
