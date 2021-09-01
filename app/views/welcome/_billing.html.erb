@@ -41,7 +41,6 @@
 						  	<%= link_to "current plan", add_payment_method_path(amount:plan.amount/100,plan:plan.id), class: "buy_button btn btn-outline-dark disabled mt-1"%>
 		      	<%end%>
 		    <%else%>
-		    		<%# debugger %>
 		    		<% if !current_user.subscription.present? %>
 		    			<%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
 		        		<%= link_to "Buy now", add_payment_method_path(amount:plan.amount/100,plan:plan.id), remote: true, class: "buy_button btn btn-primary mt-1"%>

@@ -34,11 +34,11 @@
     <% end %>
     <div class="grid">
             <div class="row">
-                <div class="ml-3 float-left w-25 bg-dark" style="height: 500px;">
-                    <%= link_to "customer_info", customer_info_path, class: "btn btn-dark d-inline-block w-100 text-light mt-5" %>
-                    <%= link_to "subscriptions", subscriptions_path, class: "btn btn-dark d-inline-block w-100" %>
-                    <%= link_to "your plans", add_payment_method_path, class: "btn btn-dark d-inline-block w-100" %>    
-                </div>
+                <!-- <div class="ml-3 float-left w-25 bg-dark" style="height: 500px;">
+                    <%#= link_to "customer_info", customer_info_path, class: "btn btn-dark d-inline-block w-100 text-light mt-5" %>
+                    <%#= link_to "subscriptions", subscriptions_path, class: "btn btn-dark d-inline-block w-100" %>
+                    <%#= link_to "your plans", add_payment_method_path, class: "btn btn-dark d-inline-block w-100" %>    
+                </div> -->
                 <div class="col-sm float-right">
                     <div class="row text-center">
                     <% @plans.each do |plan| %>
