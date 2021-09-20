@@ -4,7 +4,6 @@ class WelcomeController < ApplicationController
    @posts = Post.paginate(page: params[:page], per_page: 6)
    @postall = Post.all
    @plans = StripeService.new().plans
-  # @plans = Stripe::Plan.list.data.sort_by { |e| e[:amount] }
   end
 
   def search

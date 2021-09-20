@@ -1,6 +1,13 @@
 class BillingController < ApplicationController
    before_action :authenticate_user!
 
+  #  enum status: {
+  #   trialing: 'trialing',
+  #   active: 'active',
+  #   past_due: 'past_due',
+  #   canceled: 'canceled',
+  # }
+
   def index
    @user = current_user.email
   end
@@ -50,6 +57,10 @@ class BillingController < ApplicationController
     #create subscription for application
     @subscription = current_user.create_subscription(stripe_plna_id:subscription.items.first.plan.id, stripe_subscription_id:subscription.id, is_trial: trial,trial_expire_at:Time.at(subscription.trial_end),plan_expires_at:Time.at(subscription.current_period_end), status:subscription.status)
     redirect_to root_path, notice:"Subscribed plan"
+  end
+
+  def webhook
+    debugger
   end
 end
   

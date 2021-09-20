@@ -1,0 +1,26 @@
+<div id="send-pin" class="mt-5">
+  <h3>What's your phone number?</h3>
+  <%= form_for PhoneNumber.new, remote: true do |f| %>
+    <div class="form-group">
+      <%= hidden_field_tag :user, @user.id%>
+      <%= f.text_field :phone_number, class:'form-control mt-3 w-25' %>
+    </div>
+    <%= f.submit "Send PIN", class: "btn btn-primary", id: 'send-pin-link' %>
+  <% end %>
+</div>
+
+<div id="verify-pin">
+<h3>Enter your PIN</h3>
+<%= form_tag phone_numbers_verify_path, remote: true do |f| %>
+  <%= hidden_field_tag 'hidden_phone_number', '' %>
+  <%= hidden_field_tag :user, @user.id%>
+  <div class="form-group">
+    <%= text_field_tag :pin,'', placeholder:"Enter OTP", :class =>"form-control mt-3 w-25"%>
+  </div>
+  <%= submit_tag "Verify PIN", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div id="status-box" class="alert alert-success w-25">
+  <p id="status-message">Status: Haven’t done anything yet</p>
+</div>

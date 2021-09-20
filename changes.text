@@ -1,0 +1,12 @@
+1. products/index.html.slim
+   (38)li class=('active' if params[:stub].present? && @selected_category == cat )
+
+2. stylesheets/style-blue.scss
+   (4463) box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+   (4466) /*border: solid 2px #3899da;*/ comment
+
+3. products/_item_group_full.html.slim(tube)
+   (34) tr (- *item.stock_level_table_row)
+
+4. products/_item_group_short.html.slim(Tyres)
+   (60) add tr

@@ -9,7 +9,11 @@ Rails.application.configure do
   config.cache_classes = false
 
   Paperclip.options[:command_path] = "/usr/local/bin/"
-  
+
+  # config.web_console.whitelisted_ips = '13.235.14.237'  
+
+  config.hosts << "cde7-103-9-14-141.ngrok.io"
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -73,11 +77,12 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # config.stripe.secret_key = 'sk_test_51JNaUlSBn2OWJA3igYXVF62Ts0MPHiCtF6DnPm6sd5GDf1xQ4PnuFAOysZlBqlzEA1WV8Vbnp2IuXXXz5MbQRASa00NfEqWiFF'
+  #config.stripe.secret_key = 'sk_test_51JNaUlSBn2OWJA3igYXVF62Ts0MPHiCtF6DnPm6sd5GDf1xQ4PnuFAOysZlBqlzEA1WV8Vbnp2IuXXXz5MbQRASa00NfEqWiFF'
   # config.stripe.publishable_key = 'pk_test_51JNaUlSBn2OWJA3i33NonRjjffhtJUwLbgtsiovIrt3mwmhCHMuTaof9cwNaHqTadXoimXjBTM8Tj0eSrSf5A1tl00y6TFkeGQ'
-  # config.stripe.signing_secret = 'whsec_oat7bKnfRrgJrJ54xLsngG9NnsfeLpvY'
+  #config.stripe.signing_secret = 'whsec_aRtlkD7eCllH51w6ndUkfGABU3m9SToa'
   config.stripe.secret_key = Rails.application.credentials.stripe[:development][:secret_key]
   config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
+  config.stripe.signing_secret = Rails.application.credentials.stripe[:development][:signing_secret]
 
  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
  # config.action_mailer.raise_delivery_errors = true
@@ -94,7 +99,7 @@ Rails.application.configure do
 #   :authentication       => "plain"
 #   # :enable_starttls_auto => true
 # }
-config.hosts << "a44f-103-9-14-141.ngrok.io"
+
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true

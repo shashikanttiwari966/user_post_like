@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
+    debugger
     @plan = params[:plan]
     super
   end
@@ -47,6 +48,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def account_update_params
+    debugger
     params.require(:user).permit(:id, :user_name, :email, :admin, :role, :password_confirmation, :current_password)
   end
 

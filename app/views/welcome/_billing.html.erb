@@ -11,14 +11,16 @@
 						<%= product_detail(plan.product).description %>
 				</p>
 				<% if current_user.subscription.present? &&  current_user.subscription.stripe_plna_id == plan.id %>
-				<p class="para-billing"><b>status:</b> 
-						<%= current_user.subscription.status %> for (
-						<%= current_user.subscription.trial_expire_at.strftime("%d %h %y") %>)
-				</p>
+					<p class="para-billing"><b>status:</b> 
+							<%= subscription_retrieve(current_user.subscription.stripe_subscription_id).status %> 
+							<%if subscription_retrieve(current_user.subscription.stripe_subscription_id).status == "trialing"%>for (
+								<%= current_user.subscription.trial_expire_at.strftime("%d %h %y") %>)
+							<% end %>
+					</p>
 				<%else%>
-				<p class="para-billing"><b>Active:</b> 
-						<%= product_detail(plan.product).active %>
-				</p>
+					<p class="para-billing"><b>Active:</b> 
+							<%= product_detail(plan.product).active %>
+					</p>
 				<%end%>
 				<p class="para-billing"><b>Free trial:</b> 
 						<%= plan.trial_period_days %> days
@@ -33,11 +35,12 @@
 				</p>
 
 				<% if current_user.subscription.present? &&  current_user.subscription.stripe_plna_id == plan.id%>
-						<% if  current_user.subscription.status == "trialing"%>
-								<%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
+						<%# debugger %>
+						<% if  subscription_retrieve(current_user.subscription.stripe_subscription_id).status == "trialing"%>
+							<%= form_tag create_payment_method_path, id: "billing-create-payment-method" do  %>
 			        		<%= link_to "pay now", add_payment_method_path(amount:plan.amount/100,plan:plan.id), remote: true, class: "buy_button btn btn-success mt-1"%>
-			        	<%end%>
-		        <%else%>
+			        <%end%>
+		        <%elsif subscription_retrieve("sub_KC37ZWhUhfxZ7m").status == "active" && Time.at(subscription_retrieve("sub_KC37ZWhUhfxZ7m").trial_end) < Time.now%>
 						  	<%= link_to "current plan", add_payment_method_path(amount:plan.amount/100,plan:plan.id), class: "buy_button btn btn-outline-dark disabled mt-1"%>
 		      	<%end%>
 		    <%else%>

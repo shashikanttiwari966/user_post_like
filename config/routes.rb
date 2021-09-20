@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :likes
   resources :billing
   resources :subscriptions
+  resources :webhooks, only: [:create]
+  resources :phone_numbers, only: [:new, :create]
+  post 'phone_numbers/verify' => "phone_numbers#verify"
+
   post '/import' => 'welcome#import', :as=>'import'
   get '/search' => 'welcome#search', :as => 'search_post'
   get '/show_pdf' => 'welcome#show_pdf', :as => 'show_pdf'
@@ -21,5 +25,12 @@ Rails.application.routes.draw do
   
   # add card
   get '/customer_info' => 'billing#customer_info', as: :customer_info
+
+  # webhook
+  # mount StripeEvent::Engine, at: 'api/webhook/stripe'
+
+  # post '/webhook/chuck' => 'webhook#chuck_request', format: :json
+
+  # post 'api/webhook/stripe' => "api/webhook/stripe#webhook", format: :json
 end
 

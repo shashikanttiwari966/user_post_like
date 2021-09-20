@@ -14,9 +14,9 @@ class SessionsController < Devise::SessionsController
       redirect_to user_session_path
     elsif !@user.blank? 
       if !pass.blank?
-          if @user.valid_password?(pass) 
-            sign_in @user
-            redirect_to root_path
+          if @user.valid_password?(pass)
+            # sign_in @user
+            redirect_to new_phone_number_path(user:@user)
           else
             flash[:alert] = "Invalid Password !"
             redirect_to user_session_path

@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module LoginLogout
   class Application < Rails::Application
+    # config.web_console.permissions = '13.235.14.237'
+    config.web_console.whitelisted_ips = '13.235.14.237'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 

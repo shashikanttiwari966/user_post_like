@@ -19,6 +19,11 @@ gem 'will_paginate', '~> 3.1.0'
 # gem "paperclip", "~> 6.0.0"
 gem "paperclip"
 
+# for webhook
+gem 'stripe_event'
+
+gem 'twilio-ruby'
+
 #Use for pdf
 gem 'prawn'
 
